@@ -48,23 +48,38 @@ const chart2 = (data)=>{
     var ctx = document.getElementById("chart3").getContext('2d');
     let labels_ = []
     let data_ = []
+    let data2_=[]
     for(const item of data) {
         labels_.push(item["reportDate"])
         const num = parseInt(item["deaths"]["total"])
         data_.push(num)
+        data2_.push(item["deaths"]["china"])
     }
 
+    labels_= labels_.slice(40);
+    data_ =data_.slice(40);
+    data2_ = data2_.slice(40);
+
     var myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: labels_,
-            datasets: [{
+            datasets: [
+                {
                 label: "World Wild Deaths by Date",
                 data: data_,
-                borderWidth: 1
-            }]
+                borderWidth: 3, 
+                pointRadius:1,
+                fill:true,
+                backgroundColor: 'SILVER',
+                borderColor:'GRAY'
+            }
+        
+        ]
         },
         options: {
+            pointRadius:1,
+           
             scales: {
                 yAxes: [{
                     ticks: {
@@ -85,18 +100,29 @@ const chart1 = (data,id,title,key1,key2) => {
         const num = parseInt(item[key2])
         data_.push(num)
     }
+    labels_= labels_.slice(40);
+    data_ =data_.slice(40);
 
     var myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: labels_,
             datasets: [{
                 label: title,
                 data: data_,
-                borderWidth: 1
+                borderWidth: 3,
+                tension:0.4,
+                pointStyle:"line",
+                backgroundColor: 'SILVER',
+                borderColor:'GRAY',
+                fill:true
             }]
         },
         options: {
+            hover:{
+                mode:'average',
+                intersect:true
+            },
             scales: {
                 yAxes: [{
                     ticks: {
