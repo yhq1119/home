@@ -31,9 +31,11 @@ const result = async () => {
     document.getElementById("confirmed").innerHTML = `${data1.confirmed.value}`
     document.getElementById("recovered").innerHTML = `${data1.recovered.value}`
     document.getElementById("deaths").innerHTML = `${data1.deaths.value}`
+
     chart1(data2,"chart1","World Wide Confirmed","reportDate","totalConfirmed");
     chart1(data2,"chart2","World Wide Delta Confirmed","reportDate","deltaConfirmed");
     chart2(data2);
+    
     document.getElementById("confirmed_a").innerHTML = `${data3.confirmed.value}`
     document.getElementById("recovered_a").innerHTML = `${data3.recovered.value}`
     document.getElementById("deaths_a").innerHTML = `${data3.deaths.value}`
